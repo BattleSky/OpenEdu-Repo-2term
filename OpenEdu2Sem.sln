@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenEdu2Sem", "OpenEdu2Sem\OpenEdu2Sem.csproj", "{C1474BD4-647A-4BBF-A0F9-D8C736AD1D43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Стеки и очереди", "Стеки и очереди\Стеки и очереди.csproj", "{C1474BD4-647A-4BBF-A0F9-D8C736AD1D43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Очередь на связных списках (теория)", "Очередь на связных списках (теория)\Очередь на связных списках (теория).csproj", "{41AA3DE4-FA8F-42E6-B62E-E4FADAB620CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Дженерик-классы", "Дженерик-классы\Дженерик-классы.csproj", "{B5C3C1F1-630A-44D2-8932-3C5C194D5158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Применение стеков", "Применение стеков\Применение стеков.csproj", "{2BBBDBBF-0FFF-4DCA-9201-DF3AC888A743}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackBracketsTest", "StackBracketsTest\StackBracketsTest.csproj", "{E57C2EAD-EC20-4F63-831A-CF5C67EF8A86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{C1474BD4-647A-4BBF-A0F9-D8C736AD1D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1474BD4-647A-4BBF-A0F9-D8C736AD1D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1474BD4-647A-4BBF-A0F9-D8C736AD1D43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41AA3DE4-FA8F-42E6-B62E-E4FADAB620CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41AA3DE4-FA8F-42E6-B62E-E4FADAB620CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41AA3DE4-FA8F-42E6-B62E-E4FADAB620CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41AA3DE4-FA8F-42E6-B62E-E4FADAB620CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5C3C1F1-630A-44D2-8932-3C5C194D5158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C3C1F1-630A-44D2-8932-3C5C194D5158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C3C1F1-630A-44D2-8932-3C5C194D5158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C3C1F1-630A-44D2-8932-3C5C194D5158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BBBDBBF-0FFF-4DCA-9201-DF3AC888A743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BBBDBBF-0FFF-4DCA-9201-DF3AC888A743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BBBDBBF-0FFF-4DCA-9201-DF3AC888A743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BBBDBBF-0FFF-4DCA-9201-DF3AC888A743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E57C2EAD-EC20-4F63-831A-CF5C67EF8A86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57C2EAD-EC20-4F63-831A-CF5C67EF8A86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57C2EAD-EC20-4F63-831A-CF5C67EF8A86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57C2EAD-EC20-4F63-831A-CF5C67EF8A86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
