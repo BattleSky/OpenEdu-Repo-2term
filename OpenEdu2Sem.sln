@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsFromCourse", "StackBra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Применение очередей", "Применение очередей\Применение очередей.csproj", "{3F4A129C-5DD0-4213-8751-C75FFE492BC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Дженерики и сортировка массивов", "Дженерики и сортировка массивов\Дженерики и сортировка массивов.csproj", "{FD1AF50D-D340-4B0E-8E03-68E7CDFB7AF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{3F4A129C-5DD0-4213-8751-C75FFE492BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F4A129C-5DD0-4213-8751-C75FFE492BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F4A129C-5DD0-4213-8751-C75FFE492BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD1AF50D-D340-4B0E-8E03-68E7CDFB7AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD1AF50D-D340-4B0E-8E03-68E7CDFB7AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD1AF50D-D340-4B0E-8E03-68E7CDFB7AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD1AF50D-D340-4B0E-8E03-68E7CDFB7AF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
