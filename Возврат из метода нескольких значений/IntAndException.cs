@@ -21,7 +21,7 @@ namespace Возврат_из_метода_нескольких_значений
             return -1;
         }
 
-        static void Main1()
+        static void Main()
         {
             var value = GetNumber1();
             if (value == -1)

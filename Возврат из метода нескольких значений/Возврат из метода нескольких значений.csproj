@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Nullable.cs" />
+    <Compile Include="TupleGeneric.cs" />
     <Compile Include="Out.cs" />
     <Compile Include="IntAndException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
