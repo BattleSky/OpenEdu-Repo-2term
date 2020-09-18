@@ -67,9 +67,9 @@ namespace Clones
                 // и сначала сослаться на старый, а потом переприсвоить first как новый
             }
 
-            // в этом случае Last и first обнуляют ссылку на последний и первый элементы
+            // в этом случае Last обнуляет ссылку на последний элемент
             // получается, что ничто не указывает на элементы в стеке
-            // сборки мусора их увезет
+            // сборщик мусора их увезет
             public void Clear()
             {
                 Last = null;
@@ -77,15 +77,15 @@ namespace Clones
             }
 
         }
-        public class CloneClass
+        public class Droid
         {
             public string CurrentProgram;
             public ProgrammStack<string> ProgramToRollback;
             public ProgrammStack<string> ProgramToRelearn;
         }
 
-        private List<CloneClass> Clones = new List<CloneClass>() 
-        {new CloneClass() 
+        private List<Droid> Clones = new List<Droid>() 
+        {new Droid() 
             {
                 CurrentProgram = "basic", 
                 ProgramToRelearn = new ProgrammStack<string>(), 
@@ -121,14 +121,14 @@ namespace Clones
             return null;
         }
         
-        private CloneClass FindCloneByIndex(string index)
+        private Droid FindCloneByIndex(string index)
         {
             var clone = Clones[Convert.ToInt32(index) - 1];
             //log.Append("Clone " + index + "(sum:" + Clones.Count + " counter:" + Clones.Count + ")" + ":\n");
             return clone;
         }
 
-        private void Learn(CloneClass clone, string program)
+        private void Learn(Droid clone, string program)
         {
             clone.ProgramToRollback.Push(clone.CurrentProgram);
             //log.Append("Learn from " + clone.CurrentProgram + " to " + program+"\n");
@@ -137,7 +137,7 @@ namespace Clones
             //log.Append("Current: " + clone.CurrentProgram + " ProgramToRelearn: " + clone.ProgramToRelearn.Peek() + " ProgramToRollback: " +
                        //clone.ProgramToRollback.Peek() + "\n\n");
         }
-        private void Rollback(CloneClass clone)
+        private void Rollback(Droid clone)
         {
             //log.Append("* Rollback from " + clone.CurrentProgram + " to " + clone.ProgramToRollback.Peek() + "\n");
             clone.ProgramToRelearn.Push(clone.CurrentProgram);
@@ -145,7 +145,7 @@ namespace Clones
             //log.Append("* Current: " + clone.CurrentProgram + " ProgramToRelearn: " + clone.ProgramToRelearn.Peek() + " ProgramToRollback: " +
                        //clone.ProgramToRollback.Peek() + "\n\n");
         }
-        private void Relearn(CloneClass clone)
+        private void Relearn(Droid clone)
         {
             //log.Append("** Relearn from " + clone.CurrentProgram + " to " + clone.ProgramToRelearn.Peek() + "\n");
             clone.ProgramToRollback.Push(clone.CurrentProgram);
@@ -153,12 +153,12 @@ namespace Clones
             //log.Append("** Current: " + clone.CurrentProgram + " ProgramToRelearn: " + clone.ProgramToRelearn.Peek() + " ProgramToRollback: " +
             //           clone.ProgramToRollback.Peek() + "\n\n");
         }
-        private void Clone(CloneClass oldClone)
+        private void Clone(Droid oldClone)
         {
             //Не ковертируй стринг в инт без проверки . . . . .
             //но тут можно потому что все команды корректны по условию задачи
             //ВСЕДОЗВОЛЕННОСТЬ, АНАРХИЯ, МУХАХАХАХАХА
-            var newClone = new CloneClass()
+            var newClone = new Droid()
             {
                 CurrentProgram = oldClone.CurrentProgram,
                 ProgramToRelearn = new ProgrammStack<string>(){Last = oldClone.ProgramToRelearn.Last, count = oldClone.ProgramToRelearn.count},
@@ -170,7 +170,7 @@ namespace Clones
             Clones.Add(newClone);
             
         }
-        private string Check(CloneClass clone)
+        private string Check(Droid clone)
         {
             return clone.CurrentProgram;
         }
