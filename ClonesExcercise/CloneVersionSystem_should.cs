@@ -111,7 +111,27 @@ namespace Clones
             Assert.AreEqual(new[] { "10", "20", "30", "30", "60", "60", "70", "80", "50", "80"}, res);
         }//									1	  2     3     4     5	  6	    7      8     9     10
 
+        [Test]
+        public void RollbackTest()
+        {
+            var res = Execute("learn 1 10", "clone 1", "rollback 2");
+            Assert.AreEqual("" , res);
+        }
 
+        [Test]
+        public void LearnStackTest()
+        {
+            var res = Execute("learn 1 10", "learn 1 20", "learn 1 30", "clone 1", "clone 2",
+                "rollback 1", "rollback 2", "rollback 2", "rollback 3", "rollback 3", "rollback 3", "check 1", "check 2", "check 3");
+				Assert.AreEqual(new[] {"20", "10", "basic"}, res);
+        }
+
+        [Test]
+        public void LearnTwiceRollbackTwice()
+        {
+            var res = Execute("learn 1 45", "learn 1 45", "check 1", "rollback 1", "rollback 1", "check 1");
+			Assert.AreEqual(new[]{"45", "basic"}, res);
+        }
 
 		private List<string> Execute(params string[] queries)
 		{

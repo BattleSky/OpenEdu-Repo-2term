@@ -1,31 +1,101 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
+using System.Text;
+using NUnit.Framework.Internal;
 
 namespace Clones
 {
-	public class CloneVersionSystem : ICloneVersionSystem
-    {
 
+
+    public class CloneVersionSystem : ICloneVersionSystem
+    {
+     //   public static StringBuilder log = new StringBuilder();
+        // Элемент хранит значение и ссылку на предыдущий
+        // Реализация односвязного списка
+        public class Programms<T>
+        { 
+            public Programms<T> PreviousNode { get; set; }
+            public T Value { get; set; }
+        }
+
+
+        // Стэк хранит значения последнего и размер себя;
+        public class ProgrammStack<T>
+        {
+            public Programms<T> Last;
+            public int count = 0;
+            // Last - последний в стеке, первый на выход
+            // [[stack]] : [1] <- [2] <- [3]  <= push
+
+            public T Pop()
+            {
+                var result = Last;
+                if (result == null)
+                    throw new InvalidOperationException("Last is null with counter=" + count + " log: \n");
+                Last = result.PreviousNode;
+                count--;
+                return result.Value;
+            }
+            public T Peek()
+            {
+                try
+                {
+                    var result = Last;
+                    if (result == null)
+                        return default;
+                }
+                catch
+                {
+                    return default;
+                }
+                return Last.Value;
+            }
+
+            public void Push(T item)
+            {
+                if (Last == null) //очередь пуста, значит последний -  null
+                    Last = new Programms<T>() { Value = item };
+                else
+                {
+                    var newItem = new Programms<T>() { Value = item, PreviousNode = Last};
+                    Last = newItem;
+                }
+                count++;
+                // последний используется, чтобы положить в стек новый элемент
+                // и сначала сослаться на старый, а потом переприсвоить first как новый
+            }
+
+            // в этом случае Last и first обнуляют ссылку на последний и первый элементы
+            // получается, что ничто не указывает на элементы в стеке
+            // сборки мусора их увезет
+            public void Clear()
+            {
+                Last = null;
+                count = 0;
+            }
+
+        }
         public class CloneClass
         {
-            public string Index;
             public string CurrentProgram;
-            public LinkedList<string> ProgramToRollback;
-            public LinkedList<string> ProgramToRelearn;
+            public ProgrammStack<string> ProgramToRollback;
+            public ProgrammStack<string> ProgramToRelearn;
         }
 
         private List<CloneClass> Clones = new List<CloneClass>() 
         {new CloneClass() 
             {
-                Index = "1", 
                 CurrentProgram = "basic", 
-                ProgramToRelearn = new LinkedList<string>(), 
-                ProgramToRollback = new LinkedList<string>()
+                ProgramToRelearn = new ProgrammStack<string>(), 
+                ProgramToRollback = new ProgrammStack<string>() 
             }
         };
 
         public string Execute(string query)
         {
+            //log.Append("\""+query+"\", ");
             var splitQuery = query.Split(' ');
             // ужасно с точки зрения ошибок,
             // но условия задачи уверяют, что все команды корректны
@@ -45,6 +115,7 @@ namespace Clones
                     Clone(clone);
                     break;
                 case "check":
+                  //  log.Append("Check \n\n");
                     return Check(clone);
             }
             return null;
@@ -53,43 +124,51 @@ namespace Clones
         private CloneClass FindCloneByIndex(string index)
         {
             var clone = Clones[Convert.ToInt32(index) - 1];
+            //log.Append("Clone " + index + "(sum:" + Clones.Count + " counter:" + Clones.Count + ")" + ":\n");
             return clone;
         }
 
         private void Learn(CloneClass clone, string program)
         {
-            clone.ProgramToRollback.AddLast(clone.CurrentProgram);
+            clone.ProgramToRollback.Push(clone.CurrentProgram);
+            //log.Append("Learn from " + clone.CurrentProgram + " to " + program+"\n");
             clone.CurrentProgram = program;
-            clone.ProgramToRelearn.Clear();;
+            clone.ProgramToRelearn.Clear();
+            //log.Append("Current: " + clone.CurrentProgram + " ProgramToRelearn: " + clone.ProgramToRelearn.Peek() + " ProgramToRollback: " +
+                       //clone.ProgramToRollback.Peek() + "\n\n");
         }
         private void Rollback(CloneClass clone)
         {
-            clone.ProgramToRelearn.AddLast(clone.CurrentProgram);
-            clone.CurrentProgram = clone.ProgramToRollback.Last.Value;
-            clone.ProgramToRollback.RemoveLast();
+            //log.Append("* Rollback from " + clone.CurrentProgram + " to " + clone.ProgramToRollback.Peek() + "\n");
+            clone.ProgramToRelearn.Push(clone.CurrentProgram);
+            clone.CurrentProgram = clone.ProgramToRollback.Pop();
+            //log.Append("* Current: " + clone.CurrentProgram + " ProgramToRelearn: " + clone.ProgramToRelearn.Peek() + " ProgramToRollback: " +
+                       //clone.ProgramToRollback.Peek() + "\n\n");
         }
         private void Relearn(CloneClass clone)
         {
-            clone.CurrentProgram = clone.ProgramToRelearn.Last.Value;
+            //log.Append("** Relearn from " + clone.CurrentProgram + " to " + clone.ProgramToRelearn.Peek() + "\n");
+            clone.ProgramToRollback.Push(clone.CurrentProgram);
+            clone.CurrentProgram = clone.ProgramToRelearn.Pop();
+            //log.Append("** Current: " + clone.CurrentProgram + " ProgramToRelearn: " + clone.ProgramToRelearn.Peek() + " ProgramToRollback: " +
+            //           clone.ProgramToRollback.Peek() + "\n\n");
         }
         private void Clone(CloneClass oldClone)
         {
             //Не ковертируй стринг в инт без проверки . . . . .
             //но тут можно потому что все команды корректны по условию задачи
             //ВСЕДОЗВОЛЕННОСТЬ, АНАРХИЯ, МУХАХАХАХАХА
-            var newIndex = Convert.ToInt32(Clones.Count) + 1;
             var newClone = new CloneClass()
             {
-                Index = newIndex.ToString(),
                 CurrentProgram = oldClone.CurrentProgram,
-                ProgramToRelearn = new LinkedList<string>(),
-                ProgramToRollback = new LinkedList<string>()
+                ProgramToRelearn = new ProgrammStack<string>(){Last = oldClone.ProgramToRelearn.Last, count = oldClone.ProgramToRelearn.count},
+                ProgramToRollback = new ProgrammStack<string>(){ Last = oldClone.ProgramToRollback.Last, count = oldClone.ProgramToRollback.count}
             };
-            if (oldClone.ProgramToRelearn.First != null)
-                newClone.ProgramToRelearn.AddFirst(oldClone.ProgramToRelearn.First);
-            if (oldClone.ProgramToRollback.First != null)
-                newClone.ProgramToRollback.AddFirst(oldClone.ProgramToRollback.First);
+            //log.Append("*** Clone\n*** old: Current: " + oldClone.CurrentProgram + " ProgramToRelearn: " +oldClone.ProgramToRelearn.Peek() + " ProgramToRollback: " +
+            //           oldClone.ProgramToRollback.Peek() + "\n" + "*** new "+ Clones.Count + ": Current: " + newClone.CurrentProgram + " ProgramToRelearn: " + newClone.ProgramToRelearn.Peek() + " ProgramToRollback: " +
+            //           newClone.ProgramToRollback.Peek() + "\n\n");
             Clones.Add(newClone);
+            
         }
         private string Check(CloneClass clone)
         {
