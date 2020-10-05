@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TypesAndChecks.cs" />
     <Compile Include="GetHashCode.cs" />
     <Compile Include="SearchSubstingInString.cs" />
     <Compile Include="EqualsContainsOverrides.cs" />

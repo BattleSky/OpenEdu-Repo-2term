@@ -46,7 +46,7 @@ namespace hashes
 			{
 				var z = items[100500];
 			});
-		}
+        }
 
 		[Test]
 		public void Enumeration()
@@ -72,6 +72,15 @@ namespace hashes
 			var items = new ReadonlyBytes(4, 2, 67, 1);
 			Assert.IsTrue(items.Equals(items));
 			// ReSharper restore EqualExpressionComparison
+		}
+        [Test]
+        public void UnEqualOnDifferent()
+        {
+            byte item = 100;
+            Assert.IsFalse(new ReadonlyBytes(new byte[0]).Equals(new byte[0]));
+            Assert.IsFalse(new ReadonlyBytes(100).Equals(new byte[]{1, 2, 3}));
+            Assert.IsFalse(new ReadonlyBytes(new byte[] {1,2,3}).Equals(new byte[] { 1, 2, 3 }));
+            Assert.IsFalse(new ReadonlyBytes(100).Equals(item));
 		}
 
 		[Test]
@@ -114,6 +123,6 @@ namespace hashes
 			var hash = items.GetHashCode();
 			for (int i = 0; i < 100000; i++)
 				Assert.AreEqual(hash, items.GetHashCode());
-		}
+        }
 	}
 }
