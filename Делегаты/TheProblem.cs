@@ -46,7 +46,7 @@ namespace Делегаты
             }
         }
 
-        static void Main()
+        static void Main8()
         {
             var strings = new[] { "A", "B", "AA" };
             SortStrings(strings, new StringComparer());
