@@ -103,10 +103,10 @@ namespace Делегаты
             print("passed!");
             Console.ReadLine();
         }
-
-        static Func<T1, T3> Combine<T1, T2, T3>(Func<T1, T2> f, Func<T2, T3> g)
+        // ситаксис лямбды
+        private static Func<T1, T3> Combine<T1, T2, T3>(Func<T1, T2> f, Func<T2, T3> g)
         {
-            Func<T1, T3> result = (f, g) => g;
+            return x  => g(f(x));
         }
 
         public static void Main()
@@ -117,8 +117,8 @@ namespace Делегаты
             Console.WriteLine(f1(3.14)); // 3
             Console.WriteLine(f1(10.9)); // B 
 
-            Func<int, int> doubleValue = x => 2 * x;
             Func<int, int> minusOne = x => x - 1;
+            Func<int, int> doubleValue = x => 2 * x;
             var f2 = Combine(minusOne, doubleValue);
             Console.WriteLine(f2(2)); // 2
             Console.WriteLine(f2(5)); // 8
