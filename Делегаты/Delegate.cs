@@ -13,6 +13,8 @@ namespace DelegatesSample
     public class Program
     {
         //Этот метод принимает указатель на соответствующие функции (принимающие две строки и вовзращающие инт)
+        // в этом случае метод SortStrings делегирует обязательства сравнения инструкции comparer,
+        // которая в свою очередь является типом StringComparer. 
         public static void SortStrings(string[] array, StringComparer comparer)
         {
             for (int i = array.Length - 1; i > 0; i--)

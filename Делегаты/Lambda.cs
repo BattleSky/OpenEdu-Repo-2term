@@ -52,6 +52,7 @@ namespace Делегаты
 
         static void MainY()
         {
+            // функция, увеличивающая х на 1;
             Func<int, int> f = x => x + 1;
 
             Console.WriteLine(f(1));

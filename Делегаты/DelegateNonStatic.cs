@@ -25,6 +25,8 @@ namespace Делегаты
             var lengthComparer =
                 new StringComparer(CompareStringLength);
             SortStrings(strings, lengthComparer);
+
+
             var obj = new Comparer { Descending = true };
 
             //Можно без проблем указывать на динамические методы.
