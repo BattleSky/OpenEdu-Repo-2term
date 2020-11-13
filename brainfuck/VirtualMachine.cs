@@ -7,10 +7,7 @@ namespace func.brainfuck
 {
     public class VirtualMachine : IVirtualMachine
 	{
-        private Action<IVirtualMachine> _execute;
-        private Dictionary<char, Action<IVirtualMachine>> Commands { get; set; }
-
-        public delegate Action<IVirtualMachine> TheExecution();
+        private Dictionary<char, Action<IVirtualMachine>> Commands;
 
         public VirtualMachine(string program, int memorySize)
         {
@@ -18,33 +15,27 @@ namespace func.brainfuck
             InstructionPointer = 0;
             Instructions = program;
             Memory = new byte[memorySize];
+            Commands = new Dictionary<char, Action<IVirtualMachine>>();
         }
 
         public void RegisterCommand(char symbol, Action<IVirtualMachine> execute)
         {
-
             Commands.Add(symbol, execute);
         }
 
-        public static void MakeThisExecution(IVirtualMachine someVirtualMachine)
-        {
 
-        }
-
-
-		public string Instructions { get; }
+        public string Instructions { get; }
 		public int InstructionPointer { get; set; }
 		public byte[] Memory { get; }
 		public int MemoryPointer { get; set; }
 		public void Run()
-		{
-            for (int i = 0; i < Instructions.Length; i++)
+        {
+            for (; InstructionPointer < Instructions.Length; InstructionPointer++)
             {
-                if (Commands.ContainsKey(Instructions[i]))
-                {
-                    Commands[Instructions[i]](this);
-                }
+                var command = Instructions[InstructionPointer];
+                if (Commands.ContainsKey(command))
+                    Commands[command](this);
             }
-		}
+        }
 	}
 }
