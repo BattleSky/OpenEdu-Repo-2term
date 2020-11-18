@@ -6,7 +6,10 @@ namespace func.brainfuck
 	{
 		public static void RegisterTo(IVirtualMachine vm)
 		{
-			vm.RegisterCommand('[', b => { });
+			vm.RegisterCommand('[', b =>
+            {
+
+            });
 			vm.RegisterCommand(']', b => { });
 		}
 	}
