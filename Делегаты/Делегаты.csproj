@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnonymDelegate.cs" />
+    <Compile Include="LogicalTask.cs" />
     <Compile Include="Closure.cs" />
     <Compile Include="Lambda.cs" />
     <Compile Include="Task.cs" />
