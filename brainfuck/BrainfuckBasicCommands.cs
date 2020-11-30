@@ -21,7 +21,7 @@ namespace func.brainfuck
                 if (vm.MemoryPointer < 0)
                     vm.MemoryPointer = vm.Memory.Length - 1;
                 
-            });
+            }); //123
             vm.RegisterCommand('+', b =>
             {
                 if (vm.Memory[vm.MemoryPointer] >= 255)
