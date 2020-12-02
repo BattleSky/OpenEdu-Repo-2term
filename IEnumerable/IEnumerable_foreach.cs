@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class QueueEnumerator<T> : IEnumerator<T>
 {
 	Queue<T> queue; // очередь с которой мы работаем 
-	QueueItem<T> currentItem; // элемент на котоырй смотрим
+	QueueItem<T> currentItem; // элемент на который смотрим
 
 	public QueueEnumerator(Queue<T> queue)
 	{
