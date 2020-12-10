@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "func-brainfuck", "brainfuck
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{AD0F102E-555B-4FF6-A66A-906900036578}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "func-rocket", "rocket\func-rocket.csproj", "{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{AD0F102E-555B-4FF6-A66A-906900036578}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD0F102E-555B-4FF6-A66A-906900036578}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD0F102E-555B-4FF6-A66A-906900036578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
