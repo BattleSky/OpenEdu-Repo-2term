@@ -15,9 +15,9 @@ namespace func_rocket
 		{
 			return r =>
             {
-                var rocket = new Vector(r.Location.X, r.Location.Y);
-                //var rocket = new Vector(1, 1);
-				return rocket.Rotate(r.Direction) * forceValue;
+               // var rocket = r.Location;
+                var forceVector = new Vector(forceValue, 0);
+				return forceVector.Rotate(r.Direction);
             };
         }
 
@@ -26,26 +26,25 @@ namespace func_rocket
 		/// </summary>
 		public static RocketForce ConvertGravityToForce(Gravity gravity, Size spaceSize)
         {
-            return r => gravity(spaceSize, new Vector(r.Location.X, r.Location.Y));
+            return r => gravity(spaceSize, r.Location);
         }
 
 		/// <summary>
 		/// Суммирует все переданные силы, действующие на ракету, и возвращает суммарную силу.
 		/// </summary>
 		public static RocketForce Sum(params RocketForce[] forces)
-		{
-			return force =>
-            {
-                /*
-                 * Переменная sum будет представлять результат агрегации массива.
-                 * В качестве условия агрегации используется выражение (x,y)=> x + y,
-                 * то есть вначале к первому элементу прибавляется второй,
-                 * потом к получившемуся значению добавляется третий и так далее.
-                 */
-				var sum = forces.Aggregate((x, y) => x + y);
-                return sum(force);
-            };
-            
+        {
+            return rocket => forces.Select(force => force(rocket))
+                             .DefaultIfEmpty(Vector.Zero)
+                             .Aggregate((vector1, vector2) => vector1 + vector2); 
+
+            /*
+            * Представляется результат агрегации суммирования векторов каждого выбранного
+             * делегата внутри массива forces
+            * В качестве условия агрегации используется выражение (x,y)=> x + y,
+            * то есть вначале к первому элементу прибавляется второй,
+            * потом к получившемуся значению добавляется третий и так далее.
+            */
         }
-	}
+    }
 }
