@@ -3,6 +3,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
 namespace func_rocket
@@ -29,11 +30,12 @@ namespace func_rocket
                 var pair = new RocketAndTarget() { Rocket = new Rocket(new Vector(rocketX, rocketY), rocketVelocity, rocketDirection),
                     Target = new Vector(targetX, targetY) };
                 return pair;
-
-                // TODO: ќтработать дополнительные услови€:
                 /*
+                 * «десь можно отработать услови€:
                  * –ассто€ние от начального положени€ ракеты до цели должно быть в пределах от 450 до 550.
                  * ”гол между направлением на цель и начальным направлением ракеты должен быть не менее PI/4.
+                 *
+                 * Ќо это не потребовалось...
                  */
             }
         }
@@ -41,15 +43,39 @@ namespace func_rocket
 
         public static IEnumerable<Level> CreateLevels()
         {
+            var rocketAndTarget = new RocketAndTarget();
+            var blackhole = (rocketAndTarget.Target + rocketAndTarget.Rocket.Location) * 0.5;
+
             var levels = new List<Level>()
             {
-                new Level("Zero", new RocketAndTarget().Rocket, new RocketAndTarget().Target,
+                new Level("Zero", rocketAndTarget.Rocket, rocketAndTarget.Target,
                     (size, v) => Vector.Zero, standardPhysics),
-                new Level("Heavy", new RocketAndTarget().Rocket, new RocketAndTarget().Target,
+                new Level("Heavy", rocketAndTarget.Rocket, rocketAndTarget.Target,
                     (size, v) => new Vector(0, 0.9), standardPhysics),
-                new Level("Up", new RocketAndTarget().Rocket, new RocketAndTarget().GenerateRocketAndTarget(targetX: 700, targetY: 500).Target,
-                    ((size, v) => new Vector(0, 300 / ( + 300.0)), standardPhysics)
-                    )
+                new Level("Up", rocketAndTarget.Rocket, rocketAndTarget.GenerateRocketAndTarget(targetX: 700, targetY: 500).Target,
+                    (size, v) => new Vector(0,  -300 / (size.Height - v.Y + 300.0)), standardPhysics),
+                new Level("WhiteHole", rocketAndTarget.Rocket, rocketAndTarget.Target,
+                    (size, v) =>
+                    {
+                        var direction = rocketAndTarget.Target - v;
+                        var d = direction.Length;
+                        return direction.Normalize() * -140 * d / (d * d + 1);
+                    }, standardPhysics),
+                new Level("BlackHole", rocketAndTarget.Rocket, rocketAndTarget.Target, (size, v) =>
+                    {
+                        var direction = blackhole - v;
+                        var d = direction.Length;
+                        return direction.Normalize() * 300 * d / (d * d + 1);
+                    }, standardPhysics),
+                new Level("BlackAndWhite", rocketAndTarget.Rocket, rocketAndTarget.Target, (size, v) =>
+                {
+                    var blackholeD = (blackhole - v).Length;
+                    var whiteholeD = (rocketAndTarget.Target - v).Length;
+                    var blackGrav = (blackhole - v).Normalize() * 300 * blackholeD / (blackholeD * blackholeD + 1);
+                    var whiteGrav = (rocketAndTarget.Target - v).Normalize() * -140 * whiteholeD /
+                                    (whiteholeD * whiteholeD + 1);
+                    return (blackGrav + whiteGrav) / 2;
+                }, standardPhysics)
             };
 
             foreach (var lvl in levels)
