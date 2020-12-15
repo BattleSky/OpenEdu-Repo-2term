@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "func-rocket", "rocket\func-rocket.csproj", "{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Графы и обходы", "Графы и обходы\Графы и обходы.csproj", "{9C134ED7-FA24-4003-B0CF-ED6EBA5509F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD58B561-3113-4159-9C32-F9BAAF4EB6CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C134ED7-FA24-4003-B0CF-ED6EBA5509F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C134ED7-FA24-4003-B0CF-ED6EBA5509F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C134ED7-FA24-4003-B0CF-ED6EBA5509F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C134ED7-FA24-4003-B0CF-ED6EBA5509F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
