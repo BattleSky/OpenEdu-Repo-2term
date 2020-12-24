@@ -37,10 +37,11 @@ namespace Graph_Practice
             while (stack.Count != 0)
             {
                 var node = stack.Pop();
+                if (finished.Contains(node)) return true;
                 foreach (var nextNode in node.IncidentNodes)
                 {
-                    // TODO: доделать когда проснусь...
-                    // ...
+                    if (finished.Contains(nextNode)) continue;
+                    visited.Add(nextNode);
                     stack.Push(nextNode);
                 }
                 finished.Add(node); // красим в черный, когда рассмотрели все пути из node
