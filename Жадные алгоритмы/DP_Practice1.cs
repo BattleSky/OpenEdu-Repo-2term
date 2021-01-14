@@ -43,7 +43,7 @@ namespace Динамическое_Программирование
                         chosenFlag = true;
                     }
                 }
-                // плак плак, напиши все заново
+                //TODO: плак плак, напиши все заново
                 if (chosenFlag || k == 1)
                     resultPrice = chosenMeeting.Price + events[k].Price;
 

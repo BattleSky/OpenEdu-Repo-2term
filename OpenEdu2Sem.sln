@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Графы и обходы"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Жадные алгоритмы и ДП", "Жадные алгоритмы\Жадные алгоритмы и ДП.csproj", "{B1DF1305-58D9-4C04-B536-237B60C36F6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ_Practice", "LINQ_Practice\LINQ_Practice.csproj", "{DAD58A0A-EBE6-4431-A79F-284EEA186961}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{B1DF1305-58D9-4C04-B536-237B60C36F6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1DF1305-58D9-4C04-B536-237B60C36F6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1DF1305-58D9-4C04-B536-237B60C36F6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD58A0A-EBE6-4431-A79F-284EEA186961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD58A0A-EBE6-4431-A79F-284EEA186961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD58A0A-EBE6-4431-A79F-284EEA186961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD58A0A-EBE6-4431-A79F-284EEA186961}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
