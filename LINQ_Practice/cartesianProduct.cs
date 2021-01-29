@@ -10,7 +10,7 @@ namespace LINQ_Practice
 {
     class CartesianProduct
     {
-        public static void Main()
+        public static void MainX()
         {
             foreach (var point in GetNeighbours(new Point(1, 2)))
             {
