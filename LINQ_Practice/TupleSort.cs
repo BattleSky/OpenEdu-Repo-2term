@@ -22,7 +22,7 @@ namespace LINQ_Practice
      */
     class TupleSort
     {
-        public static void Main()
+        public static void Mainx()
         {
             var vocabulary = GetSortedWords(
                 "Hello, hello, hello, how low With the lights out, it's less dangerous " +
