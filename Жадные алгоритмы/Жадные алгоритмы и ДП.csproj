@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DP_Practice2.cs" />
     <Compile Include="DP_Practice1.cs" />
     <Compile Include="DijkstraAlgorythm.cs" />
     <Compile Include="Practice2.cs" />
