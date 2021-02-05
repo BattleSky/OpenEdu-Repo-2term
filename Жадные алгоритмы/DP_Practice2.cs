@@ -8,7 +8,7 @@ namespace Жадные_алгоритмы
 {
     class DP_Practice2
     {
-        public static void Main()
+        public static void Mainx()
         {
 
             var result1 = LevenshteinDistance("a", "a");
