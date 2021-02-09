@@ -45,7 +45,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Графы и обходы"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Жадные алгоритмы и ДП", "Жадные алгоритмы\Жадные алгоритмы и ДП.csproj", "{B1DF1305-58D9-4C04-B536-237B60C36F6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ_Practice", "LINQ_Practice\LINQ_Practice.csproj", "{DAD58A0A-EBE6-4431-A79F-284EEA186961}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ_Practice", "LINQ_Practice\LINQ_Practice.csproj", "{DAD58A0A-EBE6-4431-A79F-284EEA186961}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI", "GUI\GUI.csproj", "{4467430A-9343-44E3-A253-9EB80F9E50B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Многопоточное программирование", "Многопоточное программирование\Многопоточное программирование.csproj", "{651B5A15-D657-4D3A-A1F3-1FC60D7C9F4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -141,6 +145,14 @@ Global
 		{DAD58A0A-EBE6-4431-A79F-284EEA186961}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAD58A0A-EBE6-4431-A79F-284EEA186961}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAD58A0A-EBE6-4431-A79F-284EEA186961}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4467430A-9343-44E3-A253-9EB80F9E50B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4467430A-9343-44E3-A253-9EB80F9E50B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4467430A-9343-44E3-A253-9EB80F9E50B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4467430A-9343-44E3-A253-9EB80F9E50B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{651B5A15-D657-4D3A-A1F3-1FC60D7C9F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{651B5A15-D657-4D3A-A1F3-1FC60D7C9F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{651B5A15-D657-4D3A-A1F3-1FC60D7C9F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{651B5A15-D657-4D3A-A1F3-1FC60D7C9F4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
